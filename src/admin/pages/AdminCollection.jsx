@@ -17,8 +17,8 @@ function AdminCollection() {
         <h1 className="my-5 text-center text-3xl font-bold">All Collections</h1>
         {/* tabs */}
         <div className="flex my-5 justify-center items-center">
-          <p onClick={()=>setTab(1)} className={tab==1?"font-bold border-gray-200 text-blue-600 font-bold border-t border-l border-r p-3 cursor-pointer":"border-b font-bold border-gray-200 text-xl p-3"}>Books</p>
-          <p onClick={()=>setTab(2)} className={tab==2?"font-bold border-gray-200 text-blue-600 font-bold border-t border-l border-r p-3 cursor-pointer":"border-b font-bold border-gray-200 text-xl p-3"}>Users</p>
+          <p onClick={()=>setTab(1)} className={tab==1? "border-gray-200 text-blue-600 font-bold border-t border-l border-r p-3 cursor-pointer":"border-b font-bold border-gray-200 text-xl p-3"}>Books</p>
+          <p onClick={()=>setTab(2)} className={tab==2?"border-gray-200 text-blue-600 font-bold border-t border-l border-r p-3 cursor-pointer":"border-b font-bold border-gray-200 text-xl p-3"}>Users</p>
         </div>
 
         {/* tab content */}

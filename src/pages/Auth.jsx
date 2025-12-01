@@ -1,10 +1,29 @@
 import React, { useState } from 'react'
 import { FaEye, FaEyeSlash, FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
 
 function Auth({insideRegister}) {
 
   const [viewPassword,setViewPassword]=useState(false)
+
+  // store data from form for storing user data
+  const[userDetails,setUserDetails]=useState({
+    username:"",email:"",password:""
+  })
+  console.log(userDetails);
+
+  // for register
+  const handleRegister=(e)=>{
+    e.preventDefault()
+    const {username,email,password}=userDetails
+    if (username && password && email) {
+      toast.success("API Call")
+    }else{
+      toast.info("Please fill the form completely")
+    }
+  }
+  
 
   // const toggleViewPassword=()=>{
   //   setViewPassword(!viewPassword)
@@ -25,13 +44,13 @@ function Auth({insideRegister}) {
             {/* username */}
             {
               insideRegister &&
-              <input type="text" placeholder='Username' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
+              <input value={userDetails.username} onChange={(e)=>setUserDetails({...userDetails,username:e.target.value})} type="text" placeholder='Username' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
 
             }
             {/* email */}
-            <input type="text" placeholder='Email' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
+            <input value={userDetails.email} onChange={(e)=>setUserDetails({...userDetails,email:e.target.value})} type="text" placeholder='Email' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
             {/* password */}
-           <div className='flex items-center'> <input type={viewPassword?"text":"password"} placeholder='Password' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
+           <div className='flex items-center'> <input  value={userDetails.password} onChange={(e)=>setUserDetails({...userDetails,password:e.target.value})} type={viewPassword?"text":"password"} placeholder='Password' className='bg-white text-black placeholder-gray-400 w-full p-2  rounded mb-5' />
 
            {
             viewPassword?
@@ -56,7 +75,7 @@ function Auth({insideRegister}) {
             <div className='text-center'>
               {
                 insideRegister ?
-                <button type='button' className='bg-green-700 p-2 w-full rounded'>Register</button>
+                <button onClick={handleRegister} type='button' className='bg-green-700 p-2 w-full rounded'>Register</button>
                 :
                 <button type='button' className='bg-green-700 p-2 w-full rounded'>Login</button>
                 
@@ -77,6 +96,13 @@ function Auth({insideRegister}) {
 
         </div>
       </div>
+      {/* toast */}
+      <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          theme="colored"
+          
+        />
     </div>
   )
 }
