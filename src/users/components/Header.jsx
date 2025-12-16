@@ -8,6 +8,8 @@ function Header() {
   const [token,setToken]=useState("")
   const [dropDown,setDropDown]=useState(false)
 
+  
+
   useEffect(()=>{
     if (sessionStorage.getItem("token")) {
       const userToken=sessionStorage.getItem("token")
@@ -40,13 +42,13 @@ function Header() {
       <FaInstagram/>
       <FaFacebook className='mx-2'/>
       <FaTwitter/>
-      {/* login btn */}
+      {/* login link */}
      {
           !token ?
           <Link to={'/login'} className=' ms-2 border rounded px-2 py-1 hover:bg-white hover:text-black flex items-center'><FaUser className='me-1'/>Login</Link>
           :
           <div className="relative inline-block text-left ms-2">
-            <button onClick={()=>setDropDown(!dropDown)} className='w-full bg-white px-3 py-2 shadow hover:bg-gray-50'><img width={'50px'} height={'50px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_se_enriched&w=740&q=80" alt="profile picture" />
+            <button onClick={()=>setDropDown(!dropDown)} className='w-full bg-white px-3 py-2 shadow hover:bg-gray-50'><img width={'50px'} height={'50px'} style={{borderRadius:'50%'}} src={dp?dp:"https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_se_enriched&w=740&q=80"} alt="profile picture" />
             </button>
            {
             dropDown &&
@@ -72,7 +74,7 @@ function Header() {
           <Link to={'/login'} className=' ms-2 border rounded px-2 py-1 hover:bg-white hover:text-black flex items-center'><FaUser className='me-1'/>Login</Link>
           :
           <div className="relative inline-block text-left ms-2">
-            <button onClick={()=>setDropDown(!dropDown)} className='w-full bg-white px-3 py-2 shadow hover:bg-gray-50'><img width={'50px'} height={'50px'} style={{borderRadius:'50%'}} src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_se_enriched&w=740&q=80" alt="profile picture" />
+            <button onClick={()=>setDropDown(!dropDown)} className='w-full bg-white px-3 py-2 shadow hover:bg-gray-50'><img width={'50px'} height={'50px'} style={{borderRadius:'50%'}} src={dp?dp:"https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_se_enriched&w=740&q=80"} alt="profile picture" />
             </button>
            {
             dropDown &&

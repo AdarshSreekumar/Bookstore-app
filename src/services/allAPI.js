@@ -10,3 +10,13 @@ export const registerAPI=async(userDetails)=>{
 export const loginAPI=async(userDetails)=>{
    return await commonAPI("POST",`${serverURL}/login`,userDetails)
 }
+
+// googlelogin: called by Auth component when login btn clicked
+export const googleLoginAPI=async(userDetails)=>{
+   return await commonAPI("POST",`${serverURL}/google/sign-in`,userDetails)
+}
+
+// user/book/add - addbook api : called by SellBook component when add book btn click
+export const addBookAPI=async(reqBody,reqHeader)=>{
+   return await commonAPI("POST",`${serverURL}/user/book/add`,reqBody,reqHeader)
+}

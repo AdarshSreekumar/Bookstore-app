@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../../components/Footer'
 import Header from '../components/Header'
 import { FaCircleCheck } from 'react-icons/fa6'
@@ -10,6 +10,20 @@ import Purchase from '../components/Purchase'
 function Profile() {
 
   const[tab,setTab]=useState(1)
+  const[dp,setDp]=useState("")
+  const [username,setUsername]=useState("")
+  console.log(dp);
+  console.log(username);
+  
+
+  useEffect(()=>{
+    if (sessionStorage.getItem("token") && sessionStorage.getItem("user")) {
+        const user=JSON.parse(sessionStorage.getItem("user"))
+        setUsername(user?.username)
+        setDp(user?.picture)
+    }
+  },[])
+  
 
   return (
     <>
@@ -18,12 +32,12 @@ function Profile() {
     <div style={{height:'200px'}} className="bg-black"></div>
     {/* profile img */}
     <div style={{width:'230px',height:'230px',borderRadius:'50%',marginLeft:'70px',marginTop:'-130px'}} className='bg-white p-3'>
-      <img style={{width:'200px',height:'200px',borderRadius:'50%'}} src="https://media.istockphoto.com/id/1345371869/photo/senior-male-author-sitting-at-table-with-book-and-holds-hands-under-head.jpg?s=612x612&w=0&k=20&c=RiQw0gXvUm2c9UsAK77MjS7Wr49i5s-TEm-l6QMX43o=" alt="" />
+      <img style={{width:'200px',height:'200px',borderRadius:'50%'}} src={dp?dp:"https://media.istockphoto.com/id/1345371869/photo/senior-male-author-sitting-at-table-with-book-and-holds-hands-under-head.jpg?s=612x612&w=0&k=20&c=RiQw0gXvUm2c9UsAK77MjS7Wr49i5s-TEm-l6QMX43o="} alt="" />
     </div>
     {/* name with edit block */}
-    <div className="md:flex justify-between items-center px-5 my-5">
+    <div className="md:flex justify-between items-center md:px-20 px-5 my-5">
       
-        <h1 className="text-2xl font-bold flex items-center">Username<FaCircleCheck className='text-blue-400 ms-5'/></h1>
+        <h1 className="text-2xl font-bold flex items-center ">{username}<FaCircleCheck className='text-blue-400 ms-5'/></h1>
 
         <Edit/>
 
