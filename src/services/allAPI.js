@@ -20,3 +20,24 @@ export const googleLoginAPI=async(userDetails)=>{
 export const addBookAPI=async(reqBody,reqHeader)=>{
    return await commonAPI("POST",`${serverURL}/user/book/add`,reqBody,reqHeader)
 }
+
+///books/home :  homepage books api : called by home component when page loads
+export const getHomePageBooksAPI=async()=>{
+   return await commonAPI("GET",`${serverURL}/books/home`,{})
+}
+
+// /books/all : bookpage api : called by books component when page loads - unauthorise user
+export const getAllBooksPageAPI=async(reqHeader)=>{
+   return await commonAPI("GET",`${serverURL}/books/all`,{},reqHeader)
+}
+
+// export aonst get/all : called by bookstatus when page load - authorised user
+export const getAllUserBooksAPI=async(reqHeader)=>{
+   return await commonAPI("GET",`${serverURL}/user-books/all`,{},reqHeader)
+}
+
+// export aonst get/all : called by bookstatus when page load - authorised user
+export const getAllUserBoughtBooksAPI=async(reqHeader)=>{
+   return await commonAPI("GET",`${serverURL}/user-boughtbooks/all`,{},reqHeader)
+}
+
