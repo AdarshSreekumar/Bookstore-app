@@ -4,6 +4,8 @@ import { getAllUserBoughtBooksAPI } from '../../services/allAPI'
 function Purchase() {
 
     const [userBoughtBooks,setUserBoughtBooks]=useState([])
+    console.log(userBoughtBooks);
+    
 
     useEffect(()=>{
         getUserBoughtBooks
